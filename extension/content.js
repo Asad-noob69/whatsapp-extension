@@ -19,9 +19,17 @@
     }
   });
 
+  const norm = (s) => (s || "").trim().toLowerCase();
+
   function currentChatTitle() {
-    const el = document.querySelector("#main header span[title]");
-    return el ? (el.getAttribute("title") || el.textContent || "").trim() : "";
+    const main = document.querySelector("#main");
+    if (!main) return "";
+    for (const sel of ["header span[title]", "header [title]", 'header span[dir="auto"]']) {
+      const el = main.querySelector(sel);
+      const t = el ? (el.getAttribute("title") || el.textContent || "").trim() : "";
+      if (t) return t;
+    }
+    return "";
   }
 
   // Each message bubble has a div.copyable-text with
@@ -42,7 +50,7 @@
 
   let lastKey = "";
   function collect() {
-    if (currentChatTitle() !== groupName) return;
+    if (norm(currentChatTitle()) !== norm(groupName)) return;
     const msgs = scrapeMessages();
     if (msgs.length === 0) return;
     const key = msgs.length + "|" + (msgs[msgs.length - 1]?.text || "");
@@ -79,13 +87,13 @@
 
   function updateStatus() {
     chrome.runtime.sendMessage({ type: "getState" }, (r) => {
-      if (!r?.ok) return;
       const s = document.getElementById("wa-sum-status");
-      if (s) {
-        s.textContent =
-          `${r.messageCount || 0} messages saved` +
-          (r.latestSummary ? ` · last summary ${new Date(r.latestSummary.at).toLocaleString()}` : "");
-      }
+      if (!s || !r?.ok) return;
+      const title = currentChatTitle();
+      const match = norm(title) === norm(groupName);
+      s.textContent =
+        `Open chat: ${title || "(none)"}${match ? " ✓ reading" : ` — open "${groupName}" to read`}` +
+        ` · ${r.messageCount || 0} saved`;
     });
   }
   function refresh() {
@@ -103,5 +111,6 @@
     });
   }
 
+  setInterval(updateStatus, 3000);
   setTimeout(refresh, 2500);
 })();
