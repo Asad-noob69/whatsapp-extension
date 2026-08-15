@@ -1,0 +1,32 @@
+#wa-sum-btn {
+  position: fixed; right: 18px; bottom: 18px; z-index: 2147483647;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: #25D366; color: #fff; font-weight: 700; font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,.25);
+  font-family: system-ui, -apple-system, sans-serif; user-select: none;
+}
+#wa-sum-btn:hover { filter: brightness(1.05); }
+
+#wa-sum-panel {
+  position: fixed; right: 18px; bottom: 72px; z-index: 2147483647;
+  width: 340px; max-height: 70vh; display: none; flex-direction: column;
+  background: #fff; color: #111b21; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,.3);
+  font-family: system-ui, -apple-system, sans-serif; font-size: 13px;
+}
+#wa-sum-panel.open { display: flex; }
+
+#wa-sum-panel .wa-sum-head {
+  display: flex; justify-content: space-between; align-items: center;
+  background: #075E54; color: #fff; padding: 10px 12px; font-weight: 600;
+}
+#wa-sum-panel #wa-sum-close { cursor: pointer; font-size: 18px; line-height: 1; }
+#wa-sum-panel .wa-sum-status { padding: 6px 12px; color: #667781; font-size: 11px; border-bottom: 1px solid #eee; }
+#wa-sum-panel .wa-sum-body { padding: 12px; overflow-y: auto; white-space: pre-wrap; flex: 1; line-height: 1.4; }
+#wa-sum-panel .wa-sum-actions { padding: 10px 12px; border-top: 1px solid #eee; }
+#wa-sum-panel .wa-sum-actions button {
+  width: 100%; background: #25D366; color: #fff; border: 0;
+  padding: 9px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 13px;
+}
+#wa-sum-panel .wa-sum-hint { padding: 8px 12px; color: #8696a0; font-size: 11px; border-top: 1px solid #f0f2f5; }

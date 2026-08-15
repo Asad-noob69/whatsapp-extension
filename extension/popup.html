@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    body { width: 340px; margin: 0; font-family: system-ui, -apple-system, sans-serif; font-size: 13px; color: #111b21; }
+    header { background: #075E54; color: #fff; padding: 10px 14px; font-weight: 600; }
+    .pad { padding: 12px 14px; }
+    #status { color: #667781; font-size: 11px; margin-bottom: 8px; }
+    #summary { white-space: pre-wrap; background: #f7f8fa; border: 1px solid #eee; border-radius: 8px; padding: 10px; max-height: 220px; overflow-y: auto; line-height: 1.4; }
+    .row { display: flex; gap: 8px; margin-top: 10px; }
+    button { flex: 1; border: 0; border-radius: 8px; padding: 8px; cursor: pointer; font-weight: 600; font-size: 12px; }
+    .primary { background: #25D366; color: #fff; }
+    .ghost { background: #eceff1; color: #111b21; }
+    .danger { background: #fdecec; color: #c0392b; }
+    hr { border: 0; border-top: 1px solid #eee; margin: 14px 0 10px; }
+    h4 { margin: 0 0 8px; }
+    label { display: block; font-size: 12px; color: #445; margin-top: 8px; }
+    input { width: 100%; box-sizing: border-box; padding: 7px; border: 1px solid #ccd; border-radius: 6px; margin-top: 3px; font-size: 12px; }
+    .save { background: #075E54; color: #fff; width: 100%; margin-top: 12px; }
+    .msg { font-size: 11px; margin-top: 6px; min-height: 14px; }
+  </style>
+</head>
+<body>
+  <header>MediRec WhatsApp Summarizer</header>
+  <div class="pad">
+    <div id="status">Loading…</div>
+    <div id="summary">No summary yet.</div>
+    <div class="row">
+      <button class="primary" id="run">Summarize now</button>
+      <button class="ghost" id="export">Export</button>
+    </div>
+    <div class="row">
+      <button class="ghost" id="pubDaily">Publish daily</button>
+      <button class="ghost" id="pubWeekly">Publish weekly</button>
+    </div>
+    <div class="row">
+      <button class="danger" id="clear">Clear saved data</button>
+    </div>
+    <div class="msg" id="msg"></div>
+
+    <hr />
+    <h4>Settings</h4>
+    <label>Groq API key
+      <input id="apiKey" type="password" placeholder="gsk_..." />
+    </label>
+    <label>Model
+      <input id="model" placeholder="llama-3.3-70b-versatile" />
+    </label>
+    <label>Group name (exact WhatsApp chat title)
+      <input id="groupName" placeholder="MediRec.ca" />
+    </label>
+    <label>Auto-summarize every N minutes (0 = off)
+      <input id="interval" type="number" min="0" placeholder="0" />
+    </label>
+
+    <label>GitHub token (repo scope) — to publish to the website
+      <input id="ghToken" type="password" placeholder="ghp_..." />
+    </label>
+    <label>GitHub repo (owner/repo)
+      <input id="ghRepo" placeholder="hammadaw17/medirec-dashboard" />
+    </label>
+    <label>Data file path
+      <input id="ghPath" placeholder="data.json" />
+    </label>
+    <label>Branch
+      <input id="ghBranch" placeholder="main" />
+    </label>
+    <label style="display:flex;align-items:center;gap:6px;margin-top:10px;">
+      <input id="autoPublish" type="checkbox" style="width:auto;margin:0;" /> Auto publish daily and weekly
+    </label>
+
+    <button class="save" id="save">Save settings</button>
+    <div class="msg" id="saveMsg"></div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

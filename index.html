@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>MediRec — Project Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: #f6f7f9; }
+    .card { background: #fff; border: 1px solid #eceef1; border-radius: 16px; }
+  </style>
+</head>
+<body class="text-slate-800">
+  <header class="bg-gradient-to-r from-emerald-700 to-emerald-600 text-white">
+    <div class="max-w-5xl mx-auto px-5 py-8">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <div>
+          <h1 class="text-3xl font-bold" id="proj-name">MediRec</h1>
+          <p class="text-emerald-50/90" id="proj-tagline"></p>
+        </div>
+        <div class="text-right text-emerald-50/90 text-sm">
+          <div>Project Dashboard</div>
+          <div id="updated-at" class="text-emerald-100/80"></div>
+        </div>
+      </div>
+      <p class="mt-4 max-w-3xl text-emerald-50/90 leading-relaxed" id="proj-desc"></p>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-5 py-8 space-y-8">
+    <!-- Latest AI summary from WhatsApp -->
+    <section>
+      <h2 class="text-lg font-semibold mb-3 flex items-center gap-2">🧠 Latest summary</h2>
+      <div class="card p-5" id="latest-summary">
+        <p class="text-slate-400 text-sm">No summary yet.</p>
+      </div>
+    </section>
+
+    <!-- Milestones -->
+    <section>
+      <h2 class="text-lg font-semibold mb-3">🎯 Milestones</h2>
+      <div class="grid gap-4 sm:grid-cols-2" id="milestones"></div>
+    </section>
+
+    <!-- Achievements -->
+    <section>
+      <h2 class="text-lg font-semibold mb-3">🏆 Achievements</h2>
+      <div class="card p-5">
+        <ul class="space-y-2" id="achievements"></ul>
+      </div>
+    </section>
+
+    <div class="grid gap-8 lg:grid-cols-2">
+      <!-- Daily -->
+      <section>
+        <h2 class="text-lg font-semibold mb-3">📅 Daily updates</h2>
+        <div class="space-y-3" id="daily"></div>
+      </section>
+      <!-- Weekly -->
+      <section>
+        <h2 class="text-lg font-semibold mb-3">🗓️ Weekly updates</h2>
+        <div class="space-y-3" id="weekly"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="max-w-5xl mx-auto px-5 py-8 text-center text-slate-400 text-xs">
+    Auto-updated from the MediRec.ca WhatsApp group by the summarizer bot.
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

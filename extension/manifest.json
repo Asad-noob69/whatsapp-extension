@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "MediRec WhatsApp Summarizer",
+  "version": "1.0.0",
+  "description": "Reads the MediRec.ca WhatsApp group in the browser, keeps a safe history, and summarizes it with Groq AI.",
+  "permissions": ["storage", "alarms", "unlimitedStorage"],
+  "host_permissions": [
+    "https://web.whatsapp.com/*",
+    "https://api.groq.com/*"
+  ],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["https://web.whatsapp.com/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "WhatsApp Summarizer"
+  }
+}

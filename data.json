@@ -1,0 +1,53 @@
+{
+  "project": {
+    "name": "MediRec",
+    "tagline": "Canadian healthcare staffing platform",
+    "description": "MediRec connects verified Canadian healthcare workers with facilities for shift staffing, with agency (partner) support. Built on React, Vite and Supabase, hosted on Vercel, with data in Canada (ca-central-1). This dashboard tracks progress and is auto-updated from the MediRec.ca WhatsApp group.",
+    "updatedAt": "2026-08-15T00:00:00Z"
+  },
+  "milestones": [
+    { "title": "Migration plan + rollback checkpoint", "status": "in_progress", "detail": "Written migration plan (schema, data, auth, storage, functions, secrets), hosting confirmation, tagged rollback release and procedure." },
+    { "title": "Migrate to ca-central-1 (Canada)", "status": "in_progress", "detail": "All tables, auth users, storage and functions in the Canadian project; RLS verified; core flows passing." },
+    { "title": "Priority defects", "status": "in_progress", "detail": "Commission timezone (done), facility signup role, role-based permissions, 'Account not configured', full-app refetch on tab switch." },
+    { "title": "Security review + handover", "status": "planned", "detail": "Review SECURITY DEFINER views, written findings, handover, certificate of deletion." },
+    { "title": "Five-star reviews", "status": "done", "detail": "Facility and worker rate each other after a completed shift; public stars, private comments, Play-Store-style breakdown on profiles." },
+    { "title": "Profiles as full pages", "status": "done", "detail": "Worker and facility profiles open as clean, no-index pages instead of popups everywhere." },
+    { "title": "Designated-worker invite", "status": "done", "detail": "Admin and agency can send an open shift straight to a specific verified worker." },
+    { "title": "Final approval on matched worker", "status": "in_progress", "detail": "Facility + agency approval gate built; workflow being adjusted to agency then MediRec final approval per client." },
+    { "title": "Admin tooling", "status": "done", "detail": "Create users with a chosen password, delete workers/facilities, and mark a worker verified from the dashboard." }
+  ],
+  "achievements": [
+    "Two-way five-star reviews with private comments and a rating breakdown on profiles.",
+    "Worker and facility profiles converted from popups to clean, no-index pages.",
+    "Designated-worker invite for admin and agency, with permission rules.",
+    "Final approval gate for matched shifts (facility + agency); workflow refinement in progress.",
+    "Admin can create a user with a set password, delete accounts, and verify a worker directly.",
+    "Table/card view toggles and mobile-responsive admin pages.",
+    "Automatic cleanup of stale, unfilled, past-dated shifts.",
+    "GitHub Action to auto-deploy database migrations and edge functions.",
+    "Fixed the '0 users' count, the Create User errors, and the invite button hang."
+  ],
+  "daily": [
+    {
+      "date": "2026-08-15",
+      "summary": "Shipped reviews, profiles-as-pages, the designated-worker invite, the final-approval gate, and admin verify/create/delete tooling. Set up a WhatsApp summarizer bot and this dashboard.",
+      "points": [
+        "Reviews, profile pages, invite, and approval features pushed to main and deployed.",
+        "Admin can now create users with a chosen password, delete accounts, and mark verified.",
+        "Approval workflow to be adjusted to agency then MediRec, pending client confirmation."
+      ]
+    }
+  ],
+  "weekly": [
+    {
+      "week": "2026-08-11 to 2026-08-15",
+      "summary": "Cleared the admin-tooling defects (Create User, 0-users count, deletes), added reviews and profile pages, and built the two agency features (designated invite and final approval). Set up auto-deploy and a WhatsApp summary bot.",
+      "points": [
+        "Admin dashboard: create/verify/delete users, view toggles, mobile responsive.",
+        "Reviews and profile pages live.",
+        "Agency features built; approval workflow being finalized with the client."
+      ]
+    }
+  ],
+  "latestSummary": null
+}
