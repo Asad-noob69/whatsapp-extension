@@ -3,18 +3,54 @@
     "name": "MediRec",
     "tagline": "Canadian healthcare staffing platform",
     "description": "MediRec connects verified Canadian healthcare workers with facilities for shift staffing, with agency (partner) support. Built on React, Vite and Supabase, hosted on Vercel, with data in Canada (ca-central-1). This dashboard tracks progress and is auto-updated from the MediRec.ca WhatsApp group.",
-    "updatedAt": "2026-08-15T00:00:00Z"
+    "updatedAt": "2026-08-16T15:22:45.624Z"
   },
   "milestones": [
-    { "title": "Migration plan + rollback checkpoint", "status": "in_progress", "detail": "Written migration plan (schema, data, auth, storage, functions, secrets), hosting confirmation, tagged rollback release and procedure." },
-    { "title": "Migrate to ca-central-1 (Canada)", "status": "in_progress", "detail": "All tables, auth users, storage and functions in the Canadian project; RLS verified; core flows passing." },
-    { "title": "Priority defects", "status": "in_progress", "detail": "Commission timezone (done), facility signup role, role-based permissions, 'Account not configured', full-app refetch on tab switch." },
-    { "title": "Security review + handover", "status": "planned", "detail": "Review SECURITY DEFINER views, written findings, handover, certificate of deletion." },
-    { "title": "Five-star reviews", "status": "done", "detail": "Facility and worker rate each other after a completed shift; public stars, private comments, Play-Store-style breakdown on profiles." },
-    { "title": "Profiles as full pages", "status": "done", "detail": "Worker and facility profiles open as clean, no-index pages instead of popups everywhere." },
-    { "title": "Designated-worker invite", "status": "done", "detail": "Admin and agency can send an open shift straight to a specific verified worker." },
-    { "title": "Final approval on matched worker", "status": "in_progress", "detail": "Facility + agency approval gate built; workflow being adjusted to agency then MediRec final approval per client." },
-    { "title": "Admin tooling", "status": "done", "detail": "Create users with a chosen password, delete workers/facilities, and mark a worker verified from the dashboard." }
+    {
+      "title": "Migration plan + rollback checkpoint",
+      "status": "in_progress",
+      "detail": "Written migration plan (schema, data, auth, storage, functions, secrets), hosting confirmation, tagged rollback release and procedure."
+    },
+    {
+      "title": "Migrate to ca-central-1 (Canada)",
+      "status": "in_progress",
+      "detail": "All tables, auth users, storage and functions in the Canadian project; RLS verified; core flows passing."
+    },
+    {
+      "title": "Priority defects",
+      "status": "in_progress",
+      "detail": "Commission timezone (done), facility signup role, role-based permissions, 'Account not configured', full-app refetch on tab switch."
+    },
+    {
+      "title": "Security review + handover",
+      "status": "planned",
+      "detail": "Review SECURITY DEFINER views, written findings, handover, certificate of deletion."
+    },
+    {
+      "title": "Five-star reviews",
+      "status": "done",
+      "detail": "Facility and worker rate each other after a completed shift; public stars, private comments, Play-Store-style breakdown on profiles."
+    },
+    {
+      "title": "Profiles as full pages",
+      "status": "done",
+      "detail": "Worker and facility profiles open as clean, no-index pages instead of popups everywhere."
+    },
+    {
+      "title": "Designated-worker invite",
+      "status": "done",
+      "detail": "Admin and agency can send an open shift straight to a specific verified worker."
+    },
+    {
+      "title": "Final approval on matched worker",
+      "status": "in_progress",
+      "detail": "Facility + agency approval gate built; workflow being adjusted to agency then MediRec final approval per client."
+    },
+    {
+      "title": "Admin tooling",
+      "status": "done",
+      "detail": "Create users with a chosen password, delete workers/facilities, and mark a worker verified from the dashboard."
+    }
   ],
   "achievements": [
     "Two-way five-star reviews with private comments and a rating breakdown on profiles.",
@@ -36,6 +72,11 @@
         "Admin can now create users with a chosen password, delete accounts, and mark verified.",
         "Approval workflow to be adjusted to agency then MediRec, pending client confirmation."
       ]
+    },
+    {
+      "date": "2026-08-16",
+      "summary": "## Key points\n* Asad encountered an error while trying to create an account and suggested improvements to the facility sign-up process.\n* Asad and Hammad discussed the need for admin access, the ability to view shifts in different views, and the importance of tagging workers correctly.\n* The conversation also covered the flow of shift approvals, with Asad and Hammad debating whether Medirec should be involved in the approval process.\n* Hammad asked about the possibility of facilities using Medirec internally for scheduling and payroll.\n* Asad and Hammad discussed the migration of the Supabase database from the US to Canada and the need to connect the new database to the website deployed on Vercel.\n* Asad shared a Trello board to track progress and provided a link to join.\n\n## Decisions\n* Hammad decided to keep the current setup and not rebuild the app, instead opting to move the existing app to Vercel and continue making changes.\n* Asad will rebrand the app visually to make important information clearer and more aligned.\n* Hammad will make a small change in Lovable and publish it to test whether it breaks after the Canadian database is connected.\n\n## Action items or open questions\n* Asad needs to run a query to check if password hashes are present in the Supabase database.\n* Hammad needs to provide the data to be dumped into the new Canadian database.\n* Asad and Hammad need to discuss the cutover checklist, including the freeze window, syncing of worker uploads, and what happens to logins at switchover.\n* Asad will list the 7 passwordless accounts and break down the 64 users by role to determine the real worker number.\n* Hammad wants to prove that Lovable can still work normally against the Canadian database before proceeding further.",
+      "points": []
     }
   ],
   "weekly": [
@@ -49,5 +90,8 @@
       ]
     }
   ],
-  "latestSummary": null
+  "latestSummary": {
+    "at": 1786893765624,
+    "text": "## Key points\n* Asad encountered an error while trying to create an account and suggested improvements to the facility sign-up process.\n* Asad and Hammad discussed the need for admin access, the ability to view shifts in different views, and the importance of tagging workers correctly.\n* The conversation also covered the flow of shift approvals, with Asad and Hammad debating whether Medirec should be involved in the approval process.\n* Hammad asked about the possibility of facilities using Medirec internally for scheduling and payroll.\n* Asad and Hammad discussed the migration of the Supabase database from the US to Canada and the need to connect the new database to the website deployed on Vercel.\n* Asad shared a Trello board to track progress and provided a link to join.\n\n## Decisions\n* Hammad decided to keep the current setup and not rebuild the app, instead opting to move the existing app to Vercel and continue making changes.\n* Asad will rebrand the app visually to make important information clearer and more aligned.\n* Hammad will make a small change in Lovable and publish it to test whether it breaks after the Canadian database is connected.\n\n## Action items or open questions\n* Asad needs to run a query to check if password hashes are present in the Supabase database.\n* Hammad needs to provide the data to be dumped into the new Canadian database.\n* Asad and Hammad need to discuss the cutover checklist, including the freeze window, syncing of worker uploads, and what happens to logins at switchover.\n* Asad will list the 7 passwordless accounts and break down the 64 users by role to determine the real worker number.\n* Hammad wants to prove that Lovable can still work normally against the Canadian database before proceeding further."
+  }
 }
