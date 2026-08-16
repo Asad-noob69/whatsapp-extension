@@ -6,7 +6,8 @@
   "permissions": ["storage", "alarms", "unlimitedStorage"],
   "host_permissions": [
     "https://web.whatsapp.com/*",
-    "https://api.groq.com/*"
+    "https://api.groq.com/*",
+    "https://api.github.com/*"
   ],
   "background": { "service_worker": "background.js" },
   "content_scripts": [
