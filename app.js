@@ -28,6 +28,17 @@ function escapeHtml(s) {
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
 
+// Renders summary text as clean paragraphs: blank lines start a new paragraph,
+// single line breaks stay as soft breaks.
+function paragraphs(text, spacing = "mb-3 last:mb-0") {
+  const safe = escapeHtml(text).trim();
+  if (!safe) return "";
+  return safe
+    .split(/\n{2,}/)
+    .map((p) => `<p class="${spacing}">${p.replace(/\n/g, "<br>")}</p>`)
+    .join("");
+}
+
 function render(data) {
   const p = data.project || {};
   el("proj-name").textContent = p.name || "Project";
@@ -38,8 +49,8 @@ function render(data) {
   // Latest summary
   const ls = data.latestSummary;
   el("latest-summary").innerHTML = ls
-    ? `<div class="text-xs text-slate-400 mb-2">${fmtDate(ls.at)}</div>
-       <div class="whitespace-pre-wrap text-slate-700 leading-relaxed">${escapeHtml(ls.text)}</div>`
+    ? `<div class="text-xs text-slate-400 mb-3">${fmtDate(ls.at)}</div>
+       <div class="text-[15px] text-slate-700 leading-relaxed">${paragraphs(ls.text)}</div>`
     : `<p class="text-slate-400 text-sm">No summary yet.</p>`;
 
   // Milestones
@@ -56,14 +67,14 @@ function render(data) {
 
   // Achievements
   el("achievements").innerHTML = (data.achievements || []).map((a) =>
-    `<li class="flex gap-2"><span class="text-emerald-600">✓</span><span class="text-sm">${escapeHtml(a)}</span></li>`
+    `<li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500"></span><span class="text-sm">${escapeHtml(a)}</span></li>`
   ).join("") || `<li class="text-slate-400 text-sm">Nothing logged yet.</li>`;
 
   // Daily
   el("daily").innerHTML = (data.daily || []).slice().reverse().map((d) =>
     `<div class="card p-4">
       <div class="text-xs font-semibold text-emerald-700">${escapeHtml(d.date || "")}</div>
-      ${d.summary ? `<p class="mt-1 text-sm text-slate-700 whitespace-pre-wrap">${escapeHtml(d.summary)}</p>` : ""}
+      ${d.summary ? `<div class="mt-2 text-sm text-slate-700 leading-relaxed">${paragraphs(d.summary)}</div>` : ""}
       ${pointsList(d.points)}
     </div>`
   ).join("") || `<p class="text-slate-400 text-sm">No daily updates yet.</p>`;
@@ -72,7 +83,7 @@ function render(data) {
   el("weekly").innerHTML = (data.weekly || []).slice().reverse().map((w) =>
     `<div class="card p-4">
       <div class="text-xs font-semibold text-emerald-700">${escapeHtml(w.week || "")}</div>
-      ${w.summary ? `<p class="mt-1 text-sm text-slate-700 whitespace-pre-wrap">${escapeHtml(w.summary)}</p>` : ""}
+      ${w.summary ? `<div class="mt-2 text-sm text-slate-700 leading-relaxed">${paragraphs(w.summary)}</div>` : ""}
       ${pointsList(w.points)}
     </div>`
   ).join("") || `<p class="text-slate-400 text-sm">No weekly updates yet.</p>`;
