@@ -122,7 +122,7 @@ async function ghPut(s, obj, sha, message) {
     headers: { Authorization: `Bearer ${s.githubToken}`, Accept: "application/vnd.github+json", "Content-Type": "application/json" },
     body: JSON.stringify(body),
   });
-  if (!res.ok) { const t = await res.text().catch(() => ""); throw new Error(`GitHub write ${res.status}: ${t.slice(0, 150)}`); }
+  if (!res.ok) { const t = await res.text().catch(() => ""); throw new Error(`GitHub write ${res.status} to ${s.githubRepo}@${s.githubBranch}/${s.githubPath}: ${t.slice(0, 150)}`); }
 }
 async function publishToSite(summaryEntry, kind) {
   const s = await getSettings();
