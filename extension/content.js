@@ -21,15 +21,17 @@
 
   const norm = (s) => (s || "").trim().toLowerCase();
 
+  // The header shows the group name on the first row and the participants list
+  // on the second. WhatsApp only adds a title attribute when text is truncated,
+  // so the long participants line has [title] but the short group name does not.
+  // The group name is the FIRST text span in the header, so read that.
   function currentChatTitle() {
-    const main = document.querySelector("#main");
-    if (!main) return "";
-    for (const sel of ["header span[title]", "header [title]", 'header span[dir="auto"]']) {
-      const el = main.querySelector(sel);
-      const t = el ? (el.getAttribute("title") || el.textContent || "").trim() : "";
-      if (t) return t;
-    }
-    return "";
+    const header = document.querySelector("#main header");
+    if (!header) return "";
+    const span = header.querySelector('span[dir="auto"]');
+    if (span && span.textContent.trim()) return span.textContent.trim();
+    const t = header.querySelector("[title]");
+    return t ? (t.getAttribute("title") || t.textContent || "").trim() : "";
   }
 
   // Each message bubble has a div.copyable-text with
