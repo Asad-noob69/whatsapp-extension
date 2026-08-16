@@ -53,7 +53,7 @@ async function callGroq(convoText, s) {
         {
           role: "system",
           content:
-            "You summarize a WhatsApp group chat for a busy team. Write a short, clear summary with three headings: Key points, Decisions, and Action items or open questions. Use plain language and short bullet points. If a heading has nothing, write 'None'.",
+            "You summarize a WhatsApp group chat for a busy team. Each line in the conversation is prefixed with [time] Sender: text. Write a short, clear summary with three headings: Key points, Decisions, and Action items or open questions. Attribute things to the person who said them by name (for example, 'Asad asked about X' or 'Hammad confirmed Y'), so a reader can see who said what. Use plain language and short bullet points. If a heading has nothing, write 'None'.",
         },
         { role: "user", content: `Summarize this WhatsApp conversation:\n\n${convoText}` },
       ],
